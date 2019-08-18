@@ -11,15 +11,18 @@ public class HibernateSessionFactoryUtil {
 
     private static SessionFactory sessionFactory;
 
-    public static SessionFactory getSessioFactory() {
-        if (sessionFactory == null){
+    private HibernateSessionFactoryUtil() {}
+
+    public static SessionFactory getSessionFactory() {
+        if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration().configure();
                 configuration.addAnnotatedClass(User.class);
                 configuration.addAnnotatedClass(Auto.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-            sessionFactory = configuration.buildSessionFactory(builder.build());
-            }catch (Exception e){
+                sessionFactory = configuration.buildSessionFactory(builder.build());
+
+            } catch (Exception e) {
                 System.out.println("Exception!" + e);
             }
         }
