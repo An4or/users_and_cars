@@ -29,6 +29,15 @@ public class User {
         autos = new ArrayList<Auto>();
     }
 
+    public void addAuto(Auto auto){
+        auto.setUser(this);
+        autos.add(auto);
+    }
+
+    public void removeAuto(Auto auto) {
+        autos.remove(auto);
+    }
+
     public int getId() {
         return id;
     }
